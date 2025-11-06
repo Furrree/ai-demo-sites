@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
   try {
     const response = await fetch("/api/lead", {
       method: "POST",
-      body: new URLSearchParams(data), // send as URL-encoded
+      body: new URLSearchParams(data), // must match Apps Script expected format
     });
 
     const result = await response.json(); // safe now

@@ -2,22 +2,20 @@ import fetch from "node-fetch";
 
 export const config = {
   api: {
-    bodyParser: false, // disable built-in parser to handle URLSearchParams
+    bodyParser: false, // disable automatic parsing
   },
 };
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).send("Method Not Allowed");
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   try {
-    // Read raw body
+    // Read raw request body
     const buffers = [];
-    for await (const chunk of req) {
-      buffers.push(chunk);
-    }
+    for await (const chunk of req) buffers.push(chunk);
     const rawBody = Buffer.concat(buffers).toString();
 
-    // Send raw URLSearchParams to Google Apps Script
+    // Send to Google Apps Script
     const response = await fetch(
       "https://script.google.com/macros/s/AKfycbwj85TA0WyMDgsvwdIOcADY-N0kYH_gcsB3ULs90p-CygW1wubX1JX-L5to9TxPfre0/exec",
       {
@@ -27,7 +25,16 @@ export default async function handler(req, res) {
       }
     );
 
-    const data = await response.json(); // Apps Script now returns valid JSON
+    // Parse Apps Script response safely
+    let data;
+    try {
+      data = await response.json();
+    } catch (err) {
+      // If it's not valid JSON, still capture the message
+      const text = await response.text();
+      return res.status(500).json({ success: false, error: text });
+    }
+
     res.status(200).json(data);
 
   } catch (err) {
