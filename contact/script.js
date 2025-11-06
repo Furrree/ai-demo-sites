@@ -9,11 +9,10 @@ form.addEventListener("submit", async (e) => {
   try {
     const response = await fetch("/api/lead", {
       method: "POST",
-      body: new URLSearchParams(data), // must match Apps Script expected format
+      body: new URLSearchParams(data),
     });
 
-    const result = await response.json(); // safe now
-    console.log("Server response:", result);
+    const result = await response.json();
 
     if (result.success) {
       successMsg.style.display = "block";

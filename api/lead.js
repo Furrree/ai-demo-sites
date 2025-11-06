@@ -1,23 +1,19 @@
 import fetch from "node-fetch";
 
-export const config = {
-  api: {
-    bodyParser: false, // disable automatic parsing
-  },
-};
-
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+  if (req.method !== "POST") {
+    return res.status(405).json({ success: false, error: "Method not allowed" });
+  }
 
   try {
-    // Read raw request body
+    // Read form data from request
     const buffers = [];
     for await (const chunk of req) buffers.push(chunk);
     const rawBody = Buffer.concat(buffers).toString();
 
     // Send to Google Apps Script
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbwj85TA0WyMDgsvwdIOcADY-N0kYH_gcsB3ULs90p-CygW1wubX1JX-L5to9TxPfre0/exec",
+    const scriptRes = await fetch(
+      "https://script.google.com/macros/s/AKfycbz53BRfRBDQsPqn4zwV4GHak_DLXQeTIggebGJX3KI_M3oj_3UZEFb3RkZqUNy0VjGE/exec", // <-- replace this
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -25,20 +21,19 @@ export default async function handler(req, res) {
       }
     );
 
-    // Parse Apps Script response safely
+    const text = await scriptRes.text();
     let data;
     try {
-      data = await response.json();
-    } catch (err) {
-      // If it's not valid JSON, still capture the message
-      const text = await response.text();
+      data = JSON.parse(text);
+    } catch {
+      // fallback if Apps Script sends plain text
       return res.status(500).json({ success: false, error: text });
     }
 
-    res.status(200).json(data);
+    return res.status(200).json(data);
 
   } catch (err) {
-    console.error("Server error:", err);
+    console.error(err);
     res.status(500).json({ success: false, error: err.message });
   }
 }
