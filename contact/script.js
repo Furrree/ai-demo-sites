@@ -12,13 +12,14 @@ form.addEventListener("submit", async (e) => {
       body: new URLSearchParams(data)
     });
 
-    const result = await response.json();
+    const result = await response.json(); // now safe, Apps Script returns valid JSON
+    console.log("Server response:", result);
 
     if (result.success) {
       successMsg.style.display = "block";
       form.reset();
     } else {
-      alert("Error: " + (result.error || "Unknown error"));
+      alert("Server error: " + result.error);
     }
   } catch (err) {
     console.error("Form submission error:", err);
