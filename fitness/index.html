@@ -1,41 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FitWithMaya — Online Fitness Coaching</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IronCore Fitness — Demo | NovaSites Studio</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>FitWithMaya</h1>
-    <p>Transform your body. Empower your mind.</p>
-    <img src="logo.png" alt="Site Logo" style="height:60px;">
+  <header class="fit-header">
+    <div class="logo">
+      <img src="logo.png" alt="IronCore Fitness Logo">
+      <span>IronCore Fitness</span>
+    </div>
+    <nav>
+      <a href="#programs">Programs</a>
+      <a href="#trainers">Trainers</a>
+      <a href="#contact">Join</a>
+    </nav>
   </header>
 
-  <section class="about">
-    <h2>About Maya</h2>
-    <p>I'm Maya, your certified fitness coach. I help clients around the world achieve their fitness goals through personalized workouts and nutrition plans — all online.</p>
+  <section class="hero">
+    <h1>Train Hard. Stay Strong.</h1>
+    <p>Your journey to peak fitness starts here.</p>
+    <a href="#contact" class="cta">Get Started</a>
   </section>
 
-  <section class="services">
-    <h2>Programs</h2>
-    <ul>
-      <li>1-on-1 Online Coaching</li>
-      <li>Custom Nutrition Plan</li>
-      <li>Home Workout Program</li>
-    </ul>
+  <section id="programs" class="programs">
+    <h2>Our Programs</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Strength Training</h3>
+        <p>Customized plans to help you build muscle and endurance safely.</p>
+      </div>
+      <div class="card">
+        <h3>HIIT Sessions</h3>
+        <p>Fast-paced, fat-burning workouts designed for maximum impact.</p>
+      </div>
+      <div class="card">
+        <h3>Personal Coaching</h3>
+        <p>Work one-on-one with elite trainers who guide every step.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>Get Started</h2>
-    <p>💬 fitwithmaya@example.com<br>
-    📸 @fitwithmaya</p>
+  <section id="trainers" class="trainers">
+    <h2>Meet Our Trainers</h2>
+    <div class="team">
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=60" alt="">
+        <h4>Jordan Miles</h4>
+        <p>Certified Strength Coach</p>
+      </div>
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=60" alt="">
+        <h4>Riley Stone</h4>
+        <p>HIIT & Conditioning Expert</p>
+      </div>
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1600181950929-48c9b2b7c6de?auto=format&fit=crop&w=900&q=60" alt="">
+        <h4>Ava Torres</h4>
+        <p>Personal Fitness Coach</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Join IronCore</h2>
+    <p>Ready to transform your body? Let’s begin.</p>
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbxuhkeifAKzs_C7XisVbBbI4WPM8JkStN1THRwi_QUAQgtPOyybpAFufo7OL_hEvyn8/exec">
+      <input name="name" placeholder="Your Name" required>
+      <input name="email" placeholder="Email" type="email" required>
+      <input name="website" placeholder="Your Fitness Goal">
+      <input name="type" value="Fitness" type="hidden">
+      <input name="country" placeholder="Country">
+      <button type="submit">Join Now</button>
+    </form>
   </section>
 
   <footer>
-    <p>© 2025 FitWithMaya | Powered by AI Web Services</p>
-    <p><a href="../contact/index.html" style="color:#e63946;">Get Your Own Website →</a></p>
+    <p>© <span id="year"></span> IronCore Fitness — Designed by NovaSites Studio</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

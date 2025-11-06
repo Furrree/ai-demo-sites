@@ -1,42 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cairo Bites — Cozy Café in the Heart of the City</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BellaCaffè — Demo | NovaSites Studio</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Cairo Bites</h1>
-    <p>Your daily dose of coffee & comfort.</p>
-    <img src="logo.png" alt="Site Logo" style="height:60px;">
+  <header class="nav">
+    <div class="logo">
+      <img src="logo.png" alt="BellaCaffè Logo">
+      <span>BellaCaffè</span>
+    </div>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Book</a>
+    </nav>
   </header>
 
-  <section class="about">
-    <h2>Welcome to Cairo Bites</h2>
-    <p>We’re a small café serving handcrafted coffee, fresh pastries, and warm vibes. Whether you need a place to relax or catch up with friends, Cairo Bites is your spot.</p>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Where Flavor Meets Comfort</h1>
+      <p>Relax, sip, and enjoy hand-crafted coffee & artisan meals.</p>
+      <a href="#contact" class="cta">Reserve a Table</a>
+    </div>
   </section>
 
-  <section class="menu">
-    <h2>Our Favorites</h2>
-    <ul>
-      <li>☕ Cappuccino — $3.00</li>
-      <li>🥐 Butter Croissant — $2.50</li>
-      <li>🍰 Chocolate Cake — $4.00</li>
-    </ul>
+  <section id="menu" class="menu">
+    <h2>Our Specialties</h2>
+    <div class="grid">
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=60" alt="Latte">
+        <h3>Vanilla Latte</h3>
+        <p>Rich espresso balanced with steamed milk and smooth vanilla.</p>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=60" alt="Brunch">
+        <h3>Signature Brunch</h3>
+        <p>Freshly baked croissants, fruits, and organic ingredients.</p>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1565958011702-44e21124774d?auto=format&fit=crop&w=600&q=60" alt="Pasta">
+        <h3>Homemade Pasta</h3>
+        <p>Classic Italian comfort food served with a modern twist.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>Visit Us</h2>
-    <p>📍 Downtown Cairo<br>
-    🕒 Open 8am – 10pm<br>
-    💬 hello@cairobites.com</p>
+  <section id="about" class="about">
+    <h2>About BellaCaffè</h2>
+    <p>Founded in the heart of the city, BellaCaffè combines passion for good food with warm hospitality. Our chefs and baristas craft every plate and cup with love.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Book a Table</h2>
+    <p>Reserve your spot and experience the taste of BellaCaffè.</p>
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbxuhkeifAKzs_C7XisVbBbI4WPM8JkStN1THRwi_QUAQgtPOyybpAFufo7OL_hEvyn8/exec">
+      <input name="name" placeholder="Your Name" required>
+      <input name="email" placeholder="Email" type="email" required>
+      <input name="website" placeholder="Preferred Date">
+      <input name="type" value="Cafe" type="hidden">
+      <input name="country" placeholder="Country">
+      <button type="submit">Book Now</button>
+    </form>
   </section>
 
   <footer>
-    <p>© 2025 Cairo Bites | Built with ❤️ by AI Web Services</p>
-    <p><a href="../contact/index.html" style="color:#e63946;">Get Your Own Website →</a></p>
+    <p>© <span id="year"></span> BellaCaffè — Designed by NovaSites Studio</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo Sites — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaSites Studio — Modern Web Demos</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>AI Demo Sites</h1>
-    <p>Choose a demo website below to explore.</p>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Modern Websites. Real Results.</h1>
+      <p>Explore live demo sites built by <strong>NovaSites Studio</strong> for businesses that want to stand out online.</p>
+      <a href="#demos" class="cta">View Demo Collection</a>
+    </div>
   </header>
 
-  <main class="grid">
-    <a href="barber/index.html" class="card">
-      <h2>💈 FreshFade Studio</h2>
-      <p>Modern Barber Shop</p>
-    </a>
+  <section id="demos" class="demos">
+    <h2>Explore Our Demo Sites</h2>
+    <div class="grid">
+      <a href="barber/index.html" class="card">
+        <img src="barber/logo.png" alt="Barber Demo">
+        <h3>Edge Studio</h3>
+        <p>Clean, confident, and modern design for barbershops and salons.</p>
+      </a>
+      <a href="fitness/index.html" class="card">
+        <img src="fitness/logo.png" alt="Fitness Demo">
+        <h3>IronCore Fitness</h3>
+        <p>High-energy, powerful site built to inspire action and conversions.</p>
+      </a>
+      <a href="cafe/index.html" class="card">
+        <img src="cafe/logo.png" alt="Cafe Demo">
+        <h3>BellaCaffè</h3>
+        <p>Elegant and warm restaurant design that invites customers in.</p>
+      </a>
+    </div>
 
-    <a href="fitness/index.html" class="card">
-      <h2>🏋️ FitWithMaya</h2>
-      <p>Online Fitness Coaching</p>
-    </a>
-
-    <a href="cafe/index.html" class="card">
-      <h2>☕ Cairo Bites</h2>
-      <p>Cozy Local Café</p>
-    </a>
-  </main>
+    <a href="contact/index.html" class="cta wide">Let’s Build Yours →</a>
+  </section>
 
   <footer>
-    <p>© 2025 AI Demo Sites | Built by AI Web Services</p>
+    <p>© <span id="year"></span> NovaSites Studio. Crafted with care.</p>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
