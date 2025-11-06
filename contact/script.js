@@ -1,25 +1,28 @@
-const form = document.getElementById('leadForm');
-const successMsg = document.getElementById('successMsg');
+const form = document.getElementById("leadForm");
+const successMsg = document.getElementById("successMsg");
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // simple bot/spam check
-  if (form.honeypot.value !== "") return;
-
   const formData = new FormData(form);
+  const data = {};
+  formData.forEach((value, key) => (data[key] = value));
 
   try {
-    const response = await fetch(form.action, { method: 'POST', body: formData });
-    if (response.ok) {
+    const res = await fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+
+    if (result.success) {
+      successMsg.style.display = "block";
       form.reset();
-      successMsg.style.display = 'block';
-      setTimeout(() => successMsg.style.display = 'none', 4000);
     } else {
-      alert('There was an issue submitting the form. Please try again.');
+      alert("Error submitting form: " + result.error);
     }
   } catch (err) {
-    console.error('Form submission error:', err);
-    alert('Network error. Please try again.');
+    alert("Network error: " + err.message);
   }
 });
