@@ -3,7 +3,6 @@ const successMsg = document.getElementById("successMsg");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const data = new FormData(form);
 
   try {
@@ -14,7 +13,6 @@ form.addEventListener("submit", async (e) => {
     });
 
     const result = await response.json();
-
     if (result.success) {
       successMsg.style.display = "block";
       form.reset();
