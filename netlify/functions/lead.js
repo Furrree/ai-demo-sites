@@ -2,13 +2,17 @@ const fetch = require("node-fetch");
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method not allowed" };
+    return {
+      statusCode: 405,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ success: false, error: "Method not allowed" })
+    };
   }
 
-  // Raw body as sent by HTML form
   const rawBody = event.body;
 
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyiQzHS_ej22mjgwE8ignbq9OyNIt_OPlwxbekTpCxeIZ6bY2cntGXpXjoPxmSdnmd7/exec";
+  const scriptUrl =
+    "https://script.google.com/macros/s/AKfycbyiQzHS_ej22mjgwE8ignbq9OyNIt_OPlwxbekTpCxeIZ6bY2cntGXpXjoPxmSdnmd7/exec";
 
   try {
     const result = await fetch(scriptUrl, {
@@ -19,14 +23,24 @@ exports.handler = async (event, context) => {
 
     const text = await result.text();
 
+    // GUARANTEED JSON PARSE
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { success: false, error: text };
+    }
+
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: text, // Apps Script already returns JSON
+      body: JSON.stringify(data),
     };
+
   } catch (err) {
     return {
       statusCode: 200,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ success: false, error: err.message }),
     };
   }
